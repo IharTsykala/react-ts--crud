@@ -14,9 +14,9 @@ export const TodoList: React.FC<TodoListProps> = ({
   onRemove
   // onToggle
 }) => {
-  if (todos.length === 0) {
-    return <p className="center">Пока пользователей нет!</p>
-  }
+  // if (todos.length === 0) {
+  //   return <p className="center">Пока пользователей нет!</p>
+  // }
 
   const editHandler = (event: React.MouseEvent, user: Object) => {
     event.preventDefault()

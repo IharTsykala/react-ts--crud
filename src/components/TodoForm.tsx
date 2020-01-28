@@ -6,8 +6,7 @@ interface TodoFormProps {
 }
 
 export const TodoForm: React.FC<TodoFormProps> = props => {
-  // const [title, setTitle] = useState<string>('')
-  console.log(props.currentUser.title)
+  // const [title, setTitle] = useState<string>('')  )
   const {title} = props.currentUser
   const ref = useRef<HTMLInputElement>(null)
   if(title) ref.current!.value = title
@@ -16,27 +15,22 @@ export const TodoForm: React.FC<TodoFormProps> = props => {
   //   setTitle(event.target.value)
   // }
 
+  const addNewUser = () => {
+    props.onAdd(ref.current!.value, props.currentUser.id || Date.now(), false)
+    ref.current!.value = ""
+  }
+
   const keyPressHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      props.onAdd(ref.current!.value, Date.now(), false)
-      ref.current!.value = ""
-      // console.log(title)
+      addNewUser()
       // setTitle('')
     }
   }
 
   const ClickHandler = (event: React.MouseEvent) => {
-    // if (event.key === "Enter") {
-    props.onAdd(ref.current!.value, Date.now(), false)
-    ref.current!.value = ""
-    // console.log(title)
-    // setTitle('')
-    // }
+    addNewUser()
+    // setTitle('')    
   }
-
-  // editHandler = (title: string) => {
-  //   ref.current!.value = title
-  // }
 
   return (
     <div className="input-field mt2">
@@ -45,12 +39,12 @@ export const TodoForm: React.FC<TodoFormProps> = props => {
         // value={title}
         ref={ref}
         type="text"
-        id="title"
-        placeholder="Новый пользователь"
+        id="login"
+        placeholder="Login"
         onKeyPress={keyPressHandler}
       />
-      <label htmlFor="title" className="active">
-        Новый пользователь
+      <label htmlFor="login" className="active">
+        Login
       </label>
       <button onClick={ClickHandler}>add</button>
     </div>

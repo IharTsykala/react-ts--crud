@@ -6,7 +6,8 @@ import { ITodo } from "../interfaces"
 declare var confirm: (question: string) => boolean
 
 export const TodosPage: React.FC = () => {
-  const [todos, setTodos] = useState<ITodo[]>([])
+  const hardUser = [{title: '1', id: 1223, completed: false},{title: '2', id: 1224, completed: false}]
+  const [todos, setTodos] = useState<ITodo[]>(hardUser)
   const [currentUser, setUser] = useState<any>({})
 
   // useEffect(() => {
@@ -24,8 +25,8 @@ export const TodosPage: React.FC = () => {
       id: id,
       completed: completed
     }
-    // setTodos([newTodo, ...todos])
     console.log(newTodo)
+    // setTodos([newTodo, ...todos])    
     setTodos(prev => [newTodo, ...prev])
     setUser({})
   }
@@ -42,10 +43,11 @@ export const TodosPage: React.FC = () => {
   // }
 
   const editHandler = (user: any) => {
-    if(currentUser.title) addHandler(currentUser.title, currentUser.id, currentUser.completed)
+    if(currentUser.id) {
+      addHandler(currentUser.title, currentUser.id, currentUser.completed) 
+    } 
     setTodos(prev => prev.filter(todo => todo.id !== user.id))
-    setUser(Object.assign(currentUser, user))
-    // addHandler(user.title, user.id, user.completed)
+    setUser(user)    
   }
 
   const removeHandler = (id: number) => {
