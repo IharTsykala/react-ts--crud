@@ -7,7 +7,10 @@ interface TodoFormProps {
 
 export const TodoForm: React.FC<TodoFormProps> = props => {
   // const [title, setTitle] = useState<string>('')
-  const ref = useRef<HTMLInputElement>(props.currentUser.title)
+  console.log(props.currentUser.title)
+  const {title} = props.currentUser
+  const ref = useRef<HTMLInputElement>(null)
+  if(title) ref.current!.value = title
 
   // const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setTitle(event.target.value)

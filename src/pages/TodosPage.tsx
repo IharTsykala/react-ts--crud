@@ -7,7 +7,7 @@ declare var confirm: (question: string) => boolean
 
 export const TodosPage: React.FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([])
-  const [currentUser, setUser] = useState({})
+  const [currentUser, setUser] = useState<any>({})
 
   // useEffect(() => {
   //   const saved = JSON.parse(localStorage.getItem("todos") || "[]") as ITodo[]
@@ -25,7 +25,9 @@ export const TodosPage: React.FC = () => {
       completed: completed
     }
     // setTodos([newTodo, ...todos])
+    console.log(newTodo)
     setTodos(prev => [newTodo, ...prev])
+    setUser({})
   }
 
   // const toggleHandler = (id: number) => {
@@ -40,6 +42,7 @@ export const TodosPage: React.FC = () => {
   // }
 
   const editHandler = (user: any) => {
+    if(currentUser.title) addHandler(currentUser.title, currentUser.id, currentUser.completed)
     setTodos(prev => prev.filter(todo => todo.id !== user.id))
     setUser(Object.assign(currentUser, user))
     // addHandler(user.title, user.id, user.completed)
