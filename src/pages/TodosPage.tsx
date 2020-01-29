@@ -9,6 +9,7 @@ export const TodosPage: React.FC = () => {
   const hardUser = [{title: '1', id: 1223, completed: false},{title: '2', id: 1224, completed: false}]
   const [todos, setTodos] = useState<ITodo[]>(hardUser)
   const [currentUser, setUser] = useState<any>({})
+  
 
   // useEffect(() => {
   //   const saved = JSON.parse(localStorage.getItem("todos") || "[]") as ITodo[]
@@ -43,11 +44,11 @@ export const TodosPage: React.FC = () => {
   // }
 
   const editHandler = (user: any) => {
-    if(currentUser.id) {
-      addHandler(currentUser.title, currentUser.id, currentUser.completed) 
-    } 
-    setTodos(prev => prev.filter(todo => todo.id !== user.id))
-    setUser(user)    
+    // if(currentUser.id) {
+    //   addHandler(currentUser.title, currentUser.id, currentUser.completed) 
+    // } 
+    // setTodos(prev => prev.filter(todo => todo.id !== user.id))
+    setUser(user)     
   }
 
   const removeHandler = (id: number) => {
@@ -59,7 +60,7 @@ export const TodosPage: React.FC = () => {
 
   return (
     <>
-      <TodoForm onAdd={addHandler} currentUser={currentUser} />
+      {/* <TodoForm onAdd={addHandler} currentUser={currentUser} /> */}
 
       <TodoList todos={todos} onEdit={editHandler} onRemove={removeHandler} />
     </>

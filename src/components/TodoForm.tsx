@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useState } from "react"
 
 interface TodoFormProps {
   onAdd(title: string, id: number, complected: boolean): void
@@ -6,38 +6,34 @@ interface TodoFormProps {
 }
 
 export const TodoForm: React.FC<TodoFormProps> = props => {
-  // const [title, setTitle] = useState<string>('')  )
-  const {title} = props.currentUser
-  const ref = useRef<HTMLInputElement>(null)
-  if(title) ref.current!.value = title
+  const {title} =  props.currentUser
+  const [login, setTitle] = useState<string>('')    
 
-  // const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setTitle(event.target.value)
-  // }
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value)
+  }
 
   const addNewUser = () => {
-    props.onAdd(ref.current!.value, props.currentUser.id || Date.now(), false)
-    ref.current!.value = ""
+    props.onAdd(login, props.currentUser.id || Date.now(), false)
+    console.log(props.currentUser)   
+    setTitle('')
   }
 
   const keyPressHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      addNewUser()
-      // setTitle('')
+      addNewUser()      
     }
   }
 
   const ClickHandler = (event: React.MouseEvent) => {
-    addNewUser()
-    // setTitle('')    
+    addNewUser()        
   }
 
   return (
     <div className="input-field mt2">
       <input
-        // onChange={changeHandler}
-        // value={title}
-        ref={ref}
+        onChange={changeHandler}
+        value={title||login}        
         type="text"
         id="login"
         placeholder="Login"
