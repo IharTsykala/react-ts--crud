@@ -6,10 +6,12 @@ import { ITodo } from "../interfaces"
 declare var confirm: (question: string) => boolean
 
 export const TodosPage: React.FC = () => {
-  const hardUser = [{title: '1', id: 1223, completed: false},{title: '2', id: 1224, completed: false}]
+  const hardUser = [
+    { title: "1", id: 1223, completed: false },
+    { title: "2", id: 1224, completed: false }
+  ]
   const [todos, setTodos] = useState<ITodo[]>(hardUser)
   const [currentUser, setUser] = useState<any>({})
-  
 
   // useEffect(() => {
   //   const saved = JSON.parse(localStorage.getItem("todos") || "[]") as ITodo[]
@@ -27,7 +29,7 @@ export const TodosPage: React.FC = () => {
       completed: completed
     }
     console.log(newTodo)
-    // setTodos([newTodo, ...todos])    
+    // setTodos([newTodo, ...todos])
     setTodos(prev => [newTodo, ...prev])
     setUser({})
   }
@@ -45,10 +47,10 @@ export const TodosPage: React.FC = () => {
 
   const editHandler = (user: any) => {
     // if(currentUser.id) {
-    //   addHandler(currentUser.title, currentUser.id, currentUser.completed) 
-    // } 
+    //   addHandler(currentUser.title, currentUser.id, currentUser.completed)
+    // }
     // setTodos(prev => prev.filter(todo => todo.id !== user.id))
-    setUser(user)     
+    setUser(user)
   }
 
   const removeHandler = (id: number) => {

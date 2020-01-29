@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 // import { Navbar } from "./components/Navbar"
 import { TodosPage } from "./pages/TodosPage"
 // import { AboutPage } from "./pages/AboutPage"
-import {ModelUser} from "./pages/ModelUser"
+import { ModelUser } from "./pages/ModelUser"
 
 const App: React.FC = () => {
   return (
@@ -11,8 +11,8 @@ const App: React.FC = () => {
       {/* <Navbar /> */}
       <div className="container">
         <Switch>
-        <Route component={TodosPage} path='/' exact/>
-        <Route component={ModelUser} path='/user/:id' exact/>        
+          <Route component={TodosPage} path="/" exact />
+          <Route component={ModelUser} path="/user/:id" exact />
         </Switch>
       </div>
     </BrowserRouter>

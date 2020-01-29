@@ -6,8 +6,8 @@ interface TodoFormProps {
 }
 
 export const TodoForm: React.FC<TodoFormProps> = props => {
-  const {title} =  props.currentUser
-  const [login, setTitle] = useState<string>('')    
+  const { title } = props.currentUser
+  const [login, setTitle] = useState<string>("")
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
@@ -15,25 +15,25 @@ export const TodoForm: React.FC<TodoFormProps> = props => {
 
   const addNewUser = () => {
     props.onAdd(login, props.currentUser.id || Date.now(), false)
-    console.log(props.currentUser)   
-    setTitle('')
+    console.log(props.currentUser)
+    setTitle("")
   }
 
   const keyPressHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      addNewUser()      
+      addNewUser()
     }
   }
 
   const ClickHandler = (event: React.MouseEvent) => {
-    addNewUser()        
+    addNewUser()
   }
 
   return (
     <div className="input-field mt2">
       <input
         onChange={changeHandler}
-        value={title||login}        
+        value={title || login}
         type="text"
         id="login"
         placeholder="Login"

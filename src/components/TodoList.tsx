@@ -1,8 +1,7 @@
 import React from "react"
 import { ITodo } from "../interfaces"
 // import { NavLink } from 'react-router-dom'
-import {useHistory} from 'react-router-dom'
-
+import { useHistory } from "react-router-dom"
 
 type TodoListProps = {
   todos: ITodo[]
@@ -25,8 +24,8 @@ export const TodoList: React.FC<TodoListProps> = ({
   const editHandler = (event: React.MouseEvent, user: any) => {
     event.preventDefault()
     onEdit(user)
-    
-    history.push(`/user/${user.id}`) 
+
+    history.push(`/user/${user.id}`)
   }
 
   const removeHandler = (event: React.MouseEvent, id: number) => {
@@ -51,14 +50,16 @@ export const TodoList: React.FC<TodoListProps> = ({
                 onChange={onToggle.bind(null, todo.id)}
               /> */}
               <span>{todo.title}</span>
-              <i className="material-icons blue-text edit"
-                onClick={event => editHandler(event, todo)}>
-              {/* <NavLink
+              <i
+                className="material-icons blue-text edit"
+                onClick={event => editHandler(event, todo)}
+              >
+                {/* <NavLink
                  to="/user" 
                                 
               > */}
                 edit
-              {/* </NavLink> */}
+                {/* </NavLink> */}
               </i>
               <i
                 className="material-icons red-text"
